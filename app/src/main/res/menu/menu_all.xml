@@ -18,6 +18,15 @@
         <item android:id="@+id/categoriesPage"
             android:icon="@drawable/categories_ic"
             android:title="@string/categorias"/>
+
+        <item android:id="@+id/timePage"
+            android:icon="@drawable/time_ic"
+            android:title="Competições passadas"/>
+
+        <item android:id="@+id/locaisPage"
+            android:icon="@drawable/airplane_ic"
+            android:title="Países participantes"/>
+
     </group>
 
 </menu>

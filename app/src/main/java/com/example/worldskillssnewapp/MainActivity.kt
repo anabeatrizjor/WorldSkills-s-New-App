@@ -66,9 +66,22 @@ class MainActivity : AppCompatActivity() {
 
             when (menuItem.itemId) {
                 R.id.configPage -> {
-                    startActivity(Intent(this, ))
+                    startActivity(Intent(this, SettingsActivity::class.java))
+                }
+                R.id.homePage -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                R.id.categoriesPage -> {
+                    startActivity(Intent(this, CategoriesActivity::class.java))
+                }
+                R.id.locaisPage -> {
+                    startActivity(Intent(this, LocaisActivity::class.java))
+                }
+                R.id.timePage -> {
+                    startActivity(Intent(this, HistoricoActivity::class.java))
                 }
             }
+            true
         }
 
 
@@ -79,6 +92,17 @@ class MainActivity : AppCompatActivity() {
         updateAutoScroll()
 
 
+    }
+
+    // menu
+
+    override fun onBackPressed() {
+
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.openDrawer(GravityCompat.START)
+        }else{
+            super.onBackPressed()
+        }
     }
 
     // fun para atualizar carrossel
