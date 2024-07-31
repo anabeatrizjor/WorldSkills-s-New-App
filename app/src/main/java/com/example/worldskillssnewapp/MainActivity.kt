@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // menu
+        drawerLayout = findViewById(R.id.main)
         val menu = findViewById<ImageView>(R.id.menuMain)
         val navView = findViewById<NavigationView>(R.id.navViewMain)
 

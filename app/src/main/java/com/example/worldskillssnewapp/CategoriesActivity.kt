@@ -36,6 +36,7 @@ class CategoriesActivity : AppCompatActivity() {
         textView = findViewById(R.id.textViewSpinner)
 
         // menu
+        drawerLayout = findViewById(R.id.mainCategories)
         val menu = findViewById<ImageView>(R.id.menuCategories)
         val navView = findViewById<NavigationView>(R.id.navViewCategories)
 
