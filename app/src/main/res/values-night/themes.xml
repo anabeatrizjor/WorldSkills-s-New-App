@@ -3,5 +3,9 @@
     <style name="Base.Theme.WorldSkillssNewApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">#B4BEC9</item>
+        <item name="colorPrimaryVariant">#42CDCF</item>
+        <item name="colorOnPrimary">#2B7CA1</item>
+        <item name="colorSecondary">#C7E7D8</item>
     </style>
 </resources>

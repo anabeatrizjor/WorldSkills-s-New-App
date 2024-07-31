@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WorldSkills\'s New App</string>
+    <string name="home">Home</string>
+    <string name="contato">Contato</string>
+    <string name="configura_es">Configurações</string>
+    <string name="categorias">Categorias</string>
 </resources>

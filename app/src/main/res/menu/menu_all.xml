@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item android:id="@+id/homePage"
+            android:icon="@drawable/home_ic"
+            android:title="@string/home"/>
+
+        <item android:id="@+id/contatoPage"
+            android:icon="@drawable/contact_ic"
+            android:title="@string/contato"/>
+
+        <item android:id="@+id/configPage"
+            android:icon="@drawable/settings_ic"
+            android:title="@string/configura_es"/>
+
+        <item android:id="@+id/categoriesPage"
+            android:icon="@drawable/categories_ic"
+            android:title="@string/categorias"/>
+    </group>
+
+</menu>
