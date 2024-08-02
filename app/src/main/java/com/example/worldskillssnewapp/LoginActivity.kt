@@ -28,6 +28,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val acessoRapido = findViewById<ImageView>(R.id.acessoRapido)
+
+        acessoRapido.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
         loginBtn = findViewById(R.id.btnLogin)
         cadastroBtn = findViewById(R.id.btnCadastro)
         userInput = findViewById(R.id.usernameInputLogin)

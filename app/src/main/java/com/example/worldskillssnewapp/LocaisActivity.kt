@@ -34,7 +34,7 @@ class LocaisActivity : AppCompatActivity() {
 
         // spinner
         spinner = findViewById(R.id.spinnerLocais)
-        imageView = findViewById(R.id.imageViewSpinner)
+        imageView = findViewById(R.id.imageViewSpinnerLocais)
         textView = findViewById(R.id.textViewSpinnerLocais)
 
         // menu

@@ -1,6 +1,7 @@
 package com.example.worldskillssnewapp
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -40,6 +41,14 @@ class MainActivity : AppCompatActivity() {
         val locaisWsBtn = findViewById<FloatingActionButton>(R.id.airplaneBtn)
         val historicoWsBtn = findViewById<FloatingActionButton>(R.id.historicoBtn)
         val categoriesWsBtn = findViewById<FloatingActionButton>(R.id.categoriesBtn)
+
+        // SITE
+        val link = findViewById<ImageView>(R.id.linkMain)
+
+        link.setOnClickListener {
+            val url = Uri.parse("https://worldskills.org/")
+            startActivity(Intent(Intent.ACTION_VIEW, url))
+        }
 
         // passagem de tela por floating
 

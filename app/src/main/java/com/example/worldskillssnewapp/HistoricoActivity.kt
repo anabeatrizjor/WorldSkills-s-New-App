@@ -1,5 +1,6 @@
 package com.example.worldskillssnewapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
@@ -17,20 +18,21 @@ class HistoricoActivity : AppCompatActivity() {
     // menu
     private lateinit var drawerLayout: DrawerLayout
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_historico)
 
         // menu
-        drawerLayout = findViewById(R.id.main)
-        val menu = findViewById<ImageView>(R.id.menuMain)
-        val navView = findViewById<NavigationView>(R.id.navViewMain)
+        drawerLayout = findViewById(R.id.mainH)
+        val menu = findViewById<ImageView>(R.id.menuHistorico)
+        val navView = findViewById<NavigationView>(R.id.navViewHistorico)
 
         // floating buttons
 
-        val locaisWsBtn = findViewById<FloatingActionButton>(R.id.airplaneBtn)
-        val historicoWsBtn = findViewById<FloatingActionButton>(R.id.historicoBtn)
-        val categoriesWsBtn = findViewById<FloatingActionButton>(R.id.categoriesBtn)
+        val locaisWsBtn = findViewById<FloatingActionButton>(R.id.airplaneBtnH)
+        val historicoWsBtn = findViewById<FloatingActionButton>(R.id.historicoBtnH)
+        val categoriesWsBtn = findViewById<FloatingActionButton>(R.id.categoriesBtnH)
 
         // passagem de tela por floating
 
