@@ -30,75 +30,14 @@ class SettingsActivity : AppCompatActivity() {
     // menu
     private lateinit var drawerLayout: DrawerLayout
 
-    // night
-    private lateinit var switchNight: Switch
-    private lateinit var sharedPreferences: SharedPreferences
-
-    // notifications
-    private val NOTIFICATION_PERMISSION_REQUEST_CODE = 1
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-
-        // notifications
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val switchNotification = findViewById<Switch>(R.id.switchNotifications)
-
-        // nightMode
-        switchNight = findViewById(R.id.switchNight)
-        sharedPreferences = getSharedPreferences("AppPreferences" , MODE_PRIVATE)
 
         // menu
         drawerLayout = findViewById(R.id.mainSettings)
         val menu = findViewById<ImageView>(R.id.menuConfigurações)
         val navView = findViewById<NavigationView>(R.id.navViewSettings)
-
-        // notifications
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
-                != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, arrayOf(
-                    android.Manifest.permission.POST_NOTIFICATIONS
-                ), NOTIFICATION_PERMISSION_REQUEST_CODE)
-            }
-        }
-
-
-        switchNotification.setOnCheckedChangeListener { _ , isChecked ->
-            if (isChecked) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    if (ContextCompat.checkSelfPermission(
-                            this,
-                            android.Manifest.permission.POST_NOTIFICATIONS
-                        )
-                        != PackageManager.PERMISSION_GRANTED
-                    ) {
-                        ActivityCompat.requestPermissions(
-                            this, arrayOf(
-                                android.Manifest.permission.POST_NOTIFICATIONS
-                            ), NOTIFICATION_PERMISSION_REQUEST_CODE
-                        )
-                    } else {
-                        showNotification("WorldSkills", "Notificações ativadas")
-                    }
-                }
-            }
-        }
-
-        // nightMode lógica
-
-        val isNightMode = sharedPreferences.getBoolean("night_mode", false)
-
-        updateNightMode(isNightMode)
-
-        switchNight.setOnCheckedChangeListener { _, isChecked ->
-            updateNightMode(isChecked)
-            sharedPreferences.edit().putBoolean("night_mode", isChecked).apply()
-
-        }
 
         // menu lógica
 
@@ -130,62 +69,6 @@ class SettingsActivity : AppCompatActivity() {
             true
         }
 
-    }
-
-    // notification show
-
-    private fun showNotification(title: String, message: String) {
-
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-        val channelId = "my_channel_id"
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
-                != PackageManager.PERMISSION_GRANTED) {
-                 val channel = NotificationChannel(this.toString(), "WorldSkills", NotificationManager.IMPORTANCE_DEFAULT)
-                notificationManager.createNotificationChannel(channel)
-            }
-        }
-
-        val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setContentTitle(title)
-            .setContentText(message)
-            .setSmallIcon(R.drawable.img)
-            .setAutoCancel(true)
-
-        notificationManager.notify(1, notificationBuilder.build())
-
-    }
-
-
-    // notification cancel
-
-    private fun cancelNotification() {
-        val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.cancelAll()
-    }
-
-    // notification Request
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-
-            }else{
-
-            }
-        }
-    }
-
-    // nightMode
-    private fun updateNightMode (isNightMode: Boolean) {
-        if (isNightMode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }else{
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
     }
 
     // menu

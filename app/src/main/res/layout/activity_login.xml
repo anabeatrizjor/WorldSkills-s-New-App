@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/greenPastel"
+    tools:context=".LoginActivity">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/logoLogin"
+                android:layout_width="200dp"
+                android:layout_height="100dp"
+                android:src="@drawable/img"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"/>
+            <TextView
+                android:id="@+id/textViewLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textColor="@color/blueDark"
+                android:textSize="20sp"
+                android:layout_below="@+id/logoLogin"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/usernameInputLogin"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Username"
+                android:fontFamily="@font/poppins"
+                android:background="@drawable/selector_border"
+                android:inputType="textPersonName"
+                android:padding="10dp"
+                android:layout_below="@+id/textViewLogin"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"/>
+
+            <EditText
+                android:id="@+id/senhaInputLogin"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="Senha"
+                android:padding="5dp"
+                android:background="@drawable/selector_border"
+                android:fontFamily="@font/poppins"
+                android:inputType="textPassword"
+                android:layout_below="@+id/usernameInputLogin"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/blueDark"
+                android:text="Login"
+                android:textColor="@color/backgroundColor"
+                android:fontFamily="@font/poppins_semibold"
+                android:layout_below="@+id/senhaInputLogin"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"/>
+
+            <Button
+                android:id="@+id/btnCadastro"
+                android:layout_width="300dp"
+                android:text="Cadastro"
+                android:textColor="@color/backgroundColor"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:backgroundTint="@color/blueDark"
+                android:layout_below="@+id/btnLogin"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"/>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

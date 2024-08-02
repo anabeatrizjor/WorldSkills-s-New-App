@@ -6,4 +6,5 @@
     <color name="blueDark">#002333</color>
     <color name="greenPastel">#DEEFE7</color>
     <color name="backgroundColor">#FFFFFF</color>
+    <color name="greyDark">#68696A</color>
 </resources>

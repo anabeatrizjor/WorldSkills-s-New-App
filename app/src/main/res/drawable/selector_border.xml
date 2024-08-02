@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado de erro -->
+    <item android:state_focused="true"
+        android:state_selected="true"
+        android:state_activated="true"
+        android:drawable="@drawable/error_border"/>
+
+    <!-- Estado normal -->
+    <item android:drawable="@drawable/normal_border"/>
+</selector>
