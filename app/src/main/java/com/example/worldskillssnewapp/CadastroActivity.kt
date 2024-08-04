@@ -39,71 +39,31 @@ class CadastroActivity : AppCompatActivity() {
         }
 
         cadastroBtn.setOnClickListener {
-
-            // para mudar a cor do campo
-
-            var error = false
-
-            if (error) {
-                userInput.background = ContextCompat.getDrawable(this, R.drawable.error_border)
-                senhaInput.background = ContextCompat.getDrawable(this, R.drawable.error_border)
-                nomeInput.background = ContextCompat.getDrawable(this, R.drawable.error_border)
-                confirmSenha.background = ContextCompat.getDrawable(this, R.drawable.error_border)
-            }else{
-                userInput.background = ContextCompat.getDrawable(this, R.drawable.normal_border)
-                senhaInput.background = ContextCompat.getDrawable(this, R.drawable.normal_border)
-                nomeInput.background = ContextCompat.getDrawable(this, R.drawable.normal_border)
-                confirmSenha.background = ContextCompat.getDrawable(this, R.drawable.normal_border)
-            }
-
-            val nome = nomeInput.text.toString()
             val user = userInput.text.toString()
-            val senha = senhaInput.text.toString()
+            val nome = nomeInput.text.toString()
             val confirmSenhaa = confirmSenha.text.toString()
+            val senha = senhaInput.text.toString()
 
-            if (nome.isEmpty() || user.isEmpty() || senha.isEmpty() || confirmSenhaa.isEmpty()) {
+            if (user.isEmpty() || nome.isEmpty() || senha.isEmpty() || confirmSenhaa.isEmpty()){
                 exibirDialogo("Todos os campos devem ser preenchidos")
-                error = true
-            }else if (senha != confirmSenhaa){
-                confirmSenha.error = "As senhas não coincidem"
-            }else if (!validSenha(senha)) {
-               exibirDialogo("A senha deve ter no mínimo 6 caracteres, conter pelo menos uma letra maiúscula, 3 números e um caractere especial.")
-                error = true
-            }else {
-                saveUserData(user, senha)
+                corDoCampo(isError = true)
+            }else if (confirmSenhaa != senha){
+                confirmSenha.error = "Este campo deve estar exatamente igual ao anterior"
+            }else if (!validSenha(senha)){
+                exibirDialogo("A senha deve conter no mínimo 6 caractéres ; 1 caractére especial ; 1 letra maiúscula ; 1 letra minúscula ; 1 número.")
+                senhaInput.error
+            }else{
+                realizarCadastro(user, senha)
                 Toast.makeText(this, "Cadastro realizado com sucesso", Toast.LENGTH_SHORT).show()
-                finish()
+                startActivity(Intent(this, LoginActivity::class.java))
             }
-
-
         }
 
-    }
 
-    private fun saveUserData(user: String, senha: String) {
-        val sharedPreferences = getSharedPreferences("PREFS", Context.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-
-        editor.putString("username", user)
-        editor.putString("senha", senha)
-
-        editor.apply()
 
     }
 
-    private fun validSenha (senha: String) : Boolean {
-
-        val senhaRegex = Regex("^(?=.*[A-Z])(?=.*3\\d)(?=.*[!@#$%¨&8()_]).{6,}\$")
-
-        if (!senhaRegex.matches(senha)){
-            return false
-        }else{
-            return true
-        }
-
-    }
-
-    private fun exibirDialogo (mensagem: String) {
+    private fun exibirDialogo(mensagem: String) {
         AlertDialog.Builder(this)
             .setTitle("ATENÇÃO")
             .setMessage(mensagem)
@@ -111,6 +71,31 @@ class CadastroActivity : AppCompatActivity() {
                 dialog.dismiss()
             }
             .show()
+    }
 
+    private fun corDoCampo (isError: Boolean) {
+        val errorBorder = if (isError) R.drawable.error_border else R.drawable.normal_border
+        userInput.background = getDrawable(errorBorder)
+        senhaInput.background = getDrawable(errorBorder)
+        nomeInput.background = getDrawable(errorBorder)
+        confirmSenha.background = getDrawable(errorBorder)
+    }
+
+    private fun realizarCadastro(user: String, senha: String) {
+        val sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        editor.putString("user", user)
+        editor.putString("senha", senha)
+
+        editor.apply()
+    }
+
+    private fun validSenha(senha: String): Boolean {
+        val senhaRegex = Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%¨*()<>,._]).{6,}\$")
+
+        if (!senhaRegex.matches(senha)) return false
+
+        return true
     }
 }

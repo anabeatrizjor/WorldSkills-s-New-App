@@ -17,11 +17,11 @@
 
         <item android:id="@+id/timePage"
             android:icon="@drawable/time_ic"
-            android:title="Competições passadas"/>
+            android:title="História"/>
 
         <item android:id="@+id/locaisPage"
             android:icon="@drawable/airplane_ic"
-            android:title="Países participantes"/>
+            android:title="Países cediadores"/>
 
     </group>
 
